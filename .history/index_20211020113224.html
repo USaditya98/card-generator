@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+  </head>
+  <body>
+    <!-- Start your project here-->
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center text-center border" style="height: 100vh;">
+            <div class="d-flex justify-content-center w-100 h-50" >
+                <div class="text-center    border rounded shadow" id="create">
+                </div>
+            </div>
+            <div class="border w-50 ">
+            <div class="m-3">
+                <label class="form-label" for="height">Height</label>
+                <div class="range">
+                <input type="range" class="form-range" id="height" min="0" max="500" step="10" onchange="changeHeight(this.value)"/>
+                </div>
+            </div>
+            <div class="m-3">
+                <label class="form-label" for="width">Width</label>
+                <div class="range">
+                <input type="range" class="form-range" id="width" min="0" max="500" step="10" onchange="changeWidth(this.value)" />
+                </div>
+            </div>
+            <div class="m-3">
+                <label class="form-label" for="shadow">Shadow</label>
+                <div class="range">
+                <input type="range" class="form-range" id="shadow" min="0" max="50" step="1" onchange="myFunction(this.value)"/>
+                </div>
+            </div>
+            <div class="m-3">
+                <label class="form-label" for="customRange1">Round</label>
+                <div class="range">
+                <input type="range" class="form-range" id="customRange1" onchange="myFunction(this.value)"/>
+                </div>
+            </div>
+            <div class="m-3">
+                <label class="form-label" for="customRange1">Border</label>
+                <div class="range">
+                <input type="range" class="form-range" id="customRange1" onchange="myFunction(this.value)" />
+                </div>
+            </div>
+            </div>
+      </div>
+    </div>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+        function changeHeight(val) {
+            document.getElementById('create').style.height = val + 'px'; 
+        }
+        function changeWidth(val) {
+            document.getElementById('create').style.width = val + 'px'; 
+        }
+        function changeWidth(val) {
+            document.getElementById('create').style.width = val + 'px'; 
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+  </head>
+  <body>
+    <!-- Start your project here-->
+    <div class="container">
+      <div class="sm:flex-column d-flex justify-content-between align-items-center text-center border" style="height: 100vh;">
+            <div class="d-flex justify-content-center align-items-center w-100 h-50" >
+                <div class="text-center border " id="create">
+                </div>
+            </div>
+            <div class="sm-w-100 border w-50 p-2 mx-5 card">
+              <div class="m-3">
+                  <label class="form-label" for="height">Height</label>
+                  <div class="range">
+                  <input type="range" class="form-range" id="height" min="0" max="500" step="10" onchange="changeHeight(this.value)"/>
+                  </div>
+              </div>
+              <div class="m-3">
+                  <label class="form-label" for="width">Width</label>
+                  <div class="range">
+                  <input type="range" class="form-range" id="width" min="0" max="500" step="10" onchange="changeWidth(this.value)" />
+                  </div>
+              </div>
+              <div class="m-3">
+                  <label class="form-label" for="shadow">Shadow (X,Y)</label>
+                  <div class="range">
+                  <input type="range" class="form-range" id="shadow" min="0" max="25" step="0.5" onchange="changeShadowXY(this.value)"/>
+                  </div>
+              </div>  
+              <div class="m-3">
+                  <label class="form-label" for="radius">Round</label>
+                  <div class="range">
+                  <input type="range" class="form-range" id="radius" onchange="changeRadius(this.value)"/>
+                  </div>
+              </div>
+              <div class="m-3">
+                  <button class="btn" id="cssBtn">Copy CSS</button>
+              </div>
+            </div>
+      </div>
+      <div id="generatedCss" >
+           
+      </div>
+    </div>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+        function changeHeight(val) {
+            document.getElementById('create').style.height = val + 'px'; 
+        }
+        function changeWidth(val) {
+            document.getElementById('create').style.width = val + 'px'; 
+        }  
+        function changeShadowXY(val) { 
+         // const shadowXY = document.getElementById('shadowBlur').value;
+          //localStorage.shadowxy = val;
+         // localStorage.shadowblur = shadowXY;
+          //localStorage.setItem('shadowxy', val);
+         // localStorage.setItem('shadowblur', shadowXY);
+          document.getElementById('create').style.boxShadow = val + 'px' + ' ' + val + 'px' + ' ' + '16px' + ' ' +'0px' + ' ' +'lightgray'; 
+        } 
+   
+        function changeRadius(val) { 
+            document.getElementById('create').style.borderRadius  = val + '%' ; 
+        }
+        const cssBtn = document.getElementById('cssBtn');
+        cssBtn.addEventListener('click',generateCss);
+        function generateCss(){
+          
+          var height = document.getElementById('height').value;
+          var width = document.getElementById('width').value;
+          var boxShadow = document.getElementById('shadow').value;
+          var boxShadowColor = 'lightgray'; 
+          var borderRadius = document.getElementById('radius').value;
+
+       
+          localStorage.setItem('height', height);
+          localStorage.setItem('width', width);
+          localStorage.setItem('boxShadow', boxShadow);
+          localStorage.setItem('boxShadowColor', boxShadowColor);
+          localStorage.setItem('borderRadius', borderRadius); 
+
+
+          var arr = ['height', 'width', 'box-shadow', 'border-radius'];
+          var arrValue = [height+'px;', width+'px;', boxShadow+'px'+' '+boxShadow+'px'+' '+boxShadow+'px'+' '+boxShadowColor+';', borderRadius+'%;'];
+          var cont = document.getElementById('generatedCss'); 
+          // create ul element and set the attributes.
+          var ul = document.createElement('ul');
+          ul.setAttribute('style', 'padding: 0; margin: 0;');
+          ul.setAttribute('id', 'theList');
+      
+          for (i = 0; i <= arr.length - 1; i++) {
+              var li = document.createElement('li');     // create li element.
+              li.innerHTML = arr[i] + ':' + arrValue[i] ;      // assigning text to li using array value.
+              li.setAttribute('style', 'display: block;');    // remove the bullets.
+      
+              ul.appendChild(li);     // append li to ul.
+          }
+      
+          cont.appendChild(ul);  
+        }
+    </script>
+  </body>
+</html>
