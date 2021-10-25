@@ -21,8 +21,10 @@
           body{
             /* font-family: 'Kaushan Script', cursive !important; */
             /* font-family: 'Pacifico', cursive !important; */
-            /* font-family: 'Caveat', cursive !important; */
+            font-family: 'Caveat', cursive !important;
             letter-spacing: 1px;
+            background-color:#e0e0e0;
+            font-weight: bold;
           }
           .card-body{
             padding: 10px 0px !important;
@@ -38,15 +40,14 @@
             width:400px;
             box-shadow: 3px 3px 21px 8px #cfc9c9;
             border-radius:15%;
-            background-color:#ffffff;
+            background-color:#e0e0e0;
           }
           .defaultCss{
             height:25rem;
             width:25rem;
-            box-shadow:18px 18px 25px 0px #947f7f;
-            background-color:#e90707;
+            box-shadow:0px 0px 25px 0px #947f7f;
+            background-color:#e0e0e0;
             border-radius:30%;
-            border:4px solid #d32727;
           }
           input[type="color"] {
           	-webkit-appearance: none;
@@ -64,18 +65,61 @@
           	border: none
             border-radius:100%;
           }
+          #toolCard::-webkit-scrollbar {
+            width: 15px;
+          }
+          #toolCard::-webkit-scrollbar-track
+          {
+             background-color: transparent;
+          }
+          #toolCard::-webkit-scrollbar-thumb
+          {
+              background-color: #d6dee1;
+             border-radius: 20px;
+             border: 6px solid transparent;
+             background-clip: content-box;
+          }
+          #toolCard::-webkit-scrollbar-thumb:hover {
+            background-color: #b8bbbf;
+          }
+          #toolCard::-webkit-scrollbar-button {
+            /* background-color: #e6dee1; */
+           /* border-radius: 20px;
+           border: 6px solid transparent;
+           background-clip: content-box; */
+          }
+          input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 15px;
+          height: 15px;
+          background: transparent;
+          cursor: pointer;
+          border: 3px solid #1266f1;
+        }
+        input[type="range"]::-moz-range-thumb {
+          width: 10px;
+          height: 10px;
+          background: #1266f1;
+          cursor: pointer;
+        }
         </style>
     </head>
     <body>
       <!-- Start your project here-->
       <div class="container-fluid ">
-        <div class="py-1 px-4 text-center letter-spacing fs-5">Card Generator</div>
+        <!-- <div class="my-2 mx-4 d-flex">
+            <label class=" mx-auto w-50 " for="screenColor">Background Color </label>
+            <div class="w-50">
+                <input type="color" class="" value="#e90707" id="bgColor" onchange="changeScreenColor(this.value)" />
+            </div>
+        </div> -->
+        <div class="py-1 px-4 text-center letter-spacing fs-5 text-white">Card Generator</div>
           <div class="sm:flex-column d-flex justify-content-between align-items-center text-center ">
               <div class="d-flex justify-content-center align-items-center w-100" style="" >
                   <div class="text-center defaultCss d-flex justify-content-center align-items-center" id="create" style="">   </div>
               </div>
-
-              <div class="px-2 mx-5 card shadow-5 border border-primary overflow-auto" style="width:40%;height:38rem;">
+              <div class="px-2 mx-5 card  overflow-auto" id="toolCard" style="width:40%;height:38rem;">
                 <div class="card-body">
                   <div class="my-2 mx-4">
                       <label class="" for="height">Height</label>
@@ -124,7 +168,7 @@
                 <div class="my-2 mx-4">
                     <label class="" for="shadowBlur">Blur</label>
                     <div class="range">
-                        <input type="range" class="form-range" id="shadowBlur" min="0" max="25" step="1" value="25" onchange="changeBlur(this.value)"  />
+                        <input type="range" class="form-range" id="shadowBlur" min="0" max="60" step="1" value="60" onchange="changeBlur(this.value)"  />
                     </div>
                 </div>
                 <div class="my-2 mx-4">
@@ -137,13 +181,13 @@
                 <div class="my-2 mx-4 d-flex">
                     <label class=" mx-auto w-50 " for="shadowColor">Shadow Color </label>
                     <div class="w-50">
-                        <input type="color"  value="#947f7f" id="shadowColor"  />
+                        <input type="color"  value="#bebebe" id="shadowColor"  />
                     </div>
                 </div>
                 <div class="my-2 mx-4 d-flex">
                     <label class=" mx-auto w-50 " for="bgColor">BackGround Color </label>
                     <div class="w-50">
-                        <input type="color" class=""   value="#e90707" id="bgColor" onchange="changeBG(this.value)" />
+                        <input type="color" class=""   value="#bebebe" id="bgColor" onchange="changeBG(this.value)" />
                     </div>
                 </div>
                 <div class="my-2 mx-4 d-flex">
@@ -171,7 +215,7 @@
                 </div>
               </div>
 
-              <code id="generatedCss" class="w-auto" >
+              <code id="generatedCss" class="w-auto" style="text-align:left;font-size:0.7rem;" >
 
               </code>
             </div>
@@ -179,7 +223,7 @@
       </div>
       <footer>
         <div class="text-left mx-4">
-          Made with <i class="fas fa-heart"></i>
+          <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
       </div>
 
     </footer>
