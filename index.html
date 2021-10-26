@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -9,230 +10,129 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
         <!-- Google Fonts Roboto -->
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Kaushan+Script&family=Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/mdb.min.css" />
-        <style media="screen">
-          body{
-            /* font-family: 'Kaushan Script', cursive !important; */
-            /* font-family: 'Pacifico', cursive !important; */
-            font-family: 'Caveat', cursive !important;
-            letter-spacing: 1px;
-            background-color:#e0e0e0;
-            font-weight: bold;
-          }
-          .card-body{
-            padding: 10px 0px !important;
-          }
-          footer div{
-            letter-spacing: 3px;
-          }
-          .letter-spacing{
-            letter-spacing: 3px;
-          }
-          .cd{
-            height:400px;
-            width:400px;
-            box-shadow: 3px 3px 21px 8px #cfc9c9;
-            border-radius:15%;
-            background-color:#e0e0e0;
-          }
-          .defaultCss{
-            height:25rem;
-            width:25rem;
-            box-shadow:0px 0px 25px 0px #947f7f;
-            background-color:#e0e0e0;
-            border-radius:30%;
-          }
-          input[type="color"] {
-          	-webkit-appearance: none;
-          	border: none;
-          	width: 50%;
-          	height: 35px;
-            border-radius:100%;
-            margin: 0px auto;
-          }
-          input[type="color"]::-webkit-color-swatch-wrapper {
-          	padding: 0;
-            border-radius:100%;
-          }
-          input[type="color"]::-webkit-color-swatch {
-          	border: none
-            border-radius:100%;
-          }
-          #toolCard::-webkit-scrollbar {
-            width: 15px;
-          }
-          #toolCard::-webkit-scrollbar-track
-          {
-             background-color: transparent;
-          }
-          #toolCard::-webkit-scrollbar-thumb
-          {
-              background-color: #d6dee1;
-             border-radius: 20px;
-             border: 6px solid transparent;
-             background-clip: content-box;
-          }
-          #toolCard::-webkit-scrollbar-thumb:hover {
-            background-color: #b8bbbf;
-          }
-          #toolCard::-webkit-scrollbar-button {
-            /* background-color: #e6dee1; */
-           /* border-radius: 20px;
-           border: 6px solid transparent;
-           background-clip: content-box; */
-          }
-          input[type="range"]::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 15px;
-          height: 15px;
-          background: transparent;
-          cursor: pointer;
-          border: 3px solid #1266f1;
-        }
-        input[type="range"]::-moz-range-thumb {
-          width: 10px;
-          height: 10px;
-          background: #1266f1;
-          cursor: pointer;
-        }
-        </style>
+        <link rel="stylesheet" href="css/style.css" />
     </head>
+
     <body>
-      <!-- Start your project here-->
-      <div class="container-fluid ">
-        <!-- <div class="my-2 mx-4 d-flex">
+        <!-- Start your project here-->
+        <div class="container-fluid ">
+            <!-- <div class="my-2 mx-4 d-flex">
             <label class=" mx-auto w-50 " for="screenColor">Background Color </label>
             <div class="w-50">
                 <input type="color" class="" value="#e90707" id="bgColor" onchange="changeScreenColor(this.value)" />
             </div>
         </div> -->
-        <div class="py-1 px-4 text-center letter-spacing fs-5 text-white">Card Generator</div>
-          <div class="sm:flex-column d-flex justify-content-between align-items-center text-center ">
-              <div class="d-flex justify-content-center align-items-center w-100" style="" >
-                  <div class="text-center defaultCss d-flex justify-content-center align-items-center" id="create" style="">   </div>
-              </div>
-              <div class="px-2 mx-5 card  overflow-auto" id="toolCard" style="width:40%;height:38rem;">
-                <div class="card-body">
-                  <div class="my-2 mx-4">
-                      <label class="" for="height">Height</label>
-                      <div class="range">
-                          <input type="range" class="form-range" id="height" min="0" max="500" step="10" value="400" onchange="changeHeight(this.value)"/>
-                      </div>
-                  </div>
-                  <div class="my-2 mx-4">
-                      <label class="" for="width">Width</label>
-                      <div class="range">
-                          <input type="range" class="form-range" id="width" min="0" max="500" step="1" value="400" onchange="changeWidth(this.value)" />
-                      </div>
-                  </div>
-                  <hr>
-                <div class="my-2 mx-4">
-                    <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="radioButton"
-                          id="insetRadioButton"
-                          value="inset"
-                        />
-                        <label class="form-check-label " for="insetRadioButton">Inset</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="radioButton"
-                          id="outsetRadioButton"
-                          value="outset"
-                          onchange="changeShadowInset(this.value)"
-                          checked="checked"
-                        />
-                        <label class="form-check-label " for="outsetRadioButton">Outset</label>
-                    </div>
+            <div class="py-1 px-4 text-center letter-spacing fs-4 text-white">Card Generator</div>
+            <div class="sm:flex-column d-flex justify-content-between align-items-center text-center ">
+                <div class="d-flex justify-content-center align-items-center w-100" style="">
+                    <div class="text-center defaultCss d-flex justify-content-center align-items-center" id="create" style=""> </div>
                 </div>
-                <hr>
-                <div class="my-2 mx-4">
-                    <label class="" for="shadow">Shadow (X,Y)</label>
-                    <div class="range">
-                        <input type="range" class="form-range" id="shadow" min="0" max="50" step="1" value="18" onchange="changeShadowXY(this.value)"/>
+                <div class="px-2 mx-5 card  overflow-auto" id="toolCard" style="width:40%;height:38rem;">
+                    <div class="card-body">
+                        <div class="my-2 mx-4">
+                            <label class="" for="height">Height</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="height" min="0" max="500" step="10" value="400" onchange="changeHeight(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class="" for="width">Width</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="width" min="0" max="500" step="1" value="400" onchange="changeWidth(this.value)" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="my-2 mx-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioButton" id="insetRadioButton" onchange="changeShadowInsetOutset(this.value)" value="inset" />
+                                <label class="form-check-label " for="insetRadioButton" data-mdb-toggle="tooltip" data-mdb-html="true" title="<em>Inset</em>"><i class="fas fa-square-full inset"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioButton" id="outsetRadioButton" value="outset" onchange="changeShadowInsetOutset(this.value)" checked="checked" />
+                                <label class="form-check-label " for="outsetRadioButton" data-mdb-toggle="tooltip" data-mdb-html="true" title="<em>outset</em>"><i class="fas fa-square-full outset"></i></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="my-2 mx-4">
+                            <label class="" for="shadow">Shadow (X,Y)</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="shadow" min="0" max="50" step="1" value="18" onchange="changeShadowXY(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class="" for="shadowBlur">Blur</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="shadowBlur" min="0" max="60" step="1" value="60" onchange="changeBlur(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class="" for="shadowSpread">Spread</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="shadowSpread" min="0" max="25" step="1" value="0" onchange="changeShadowSpread(this.value)" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="my-2 mx-4 d-flex">
+                            <label class=" mx-auto w-50 " for="shadowColor">Shadow Color </label>
+                            <div class="w-50">
+                                <input type="color" value="#bebebe" id="shadowColor" onchange="changeShadowColor(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4 d-flex">
+                            <label class=" mx-auto w-50 " for="bgColor">BackGround Color </label>
+                            <div class="w-50">
+                                <input type="color" class="" value="#bebebe" id="bgColor" onchange="changeBG(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4 d-flex">
+                            <label class=" mx-auto w-50 " for="borderColor">Border Color </label>
+                            <div class="w-50">
+                                <input type="color" class="" value="#bebebe" id="borderColor" onchange="changeBorderColor(this.value)" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="my-2 mx-4">
+                            <label class=" " for="border ">Border Width</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="border" min="0" max="10" step="0.5" value="4" onchange="changeBorderWidth(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class=" " for="radius ">Border Radius</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="radius" min="0" max="100" step="5" value="30" onchange="changeRadius(this.value)" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4 flex">
+                            <button class="btn text-primary " id="cssBtn">Generate CSS</button>
+                            <button class="btn text-danger " id="clear" onclick="clearcontent()">Clear</button>
+                        </div>
                     </div>
-                </div>
-                <div class="my-2 mx-4">
-                    <label class="" for="shadowBlur">Blur</label>
-                    <div class="range">
-                        <input type="range" class="form-range" id="shadowBlur" min="0" max="60" step="1" value="60" onchange="changeBlur(this.value)"  />
-                    </div>
-                </div>
-                <div class="my-2 mx-4">
-                    <label class="" for="shadowSpread">Spread</label>
-                    <div class="range">
-                        <input type="range" class="form-range" id="shadowSpread" min="0" max="25" step="1" value="0" onchange="changeShadowSpread(this.value)"  />
-                    </div>
-                </div>
-                <hr>
-                <div class="my-2 mx-4 d-flex">
-                    <label class=" mx-auto w-50 " for="shadowColor">Shadow Color </label>
-                    <div class="w-50">
-                        <input type="color"  value="#bebebe" id="shadowColor"  />
-                    </div>
-                </div>
-                <div class="my-2 mx-4 d-flex">
-                    <label class=" mx-auto w-50 " for="bgColor">BackGround Color </label>
-                    <div class="w-50">
-                        <input type="color" class=""   value="#bebebe" id="bgColor" onchange="changeBG(this.value)" />
-                    </div>
-                </div>
-                <div class="my-2 mx-4 d-flex">
-                    <label class=" mx-auto w-50 " for="borderColor">Border Color </label>
-                    <div class="w-50">
-                        <input type="color" class=""   value="#bebebe" id="borderColor" onchange="changeBorderColor(this.value)" />
-                    </div>
-                </div>
-                <hr>
-                <div class="my-2 mx-4">
-                    <label class=" " for="border ">Border Width</label>
-                    <div class="range">
-                        <input type="range" class="form-range" id="border" min="0" max="10" step="0.5" value="4" onchange="changeBorderWidth(this.value)"/>
-                    </div>
-                </div>
-                <div class="my-2 mx-4">
-                    <label class=" " for="radius ">Border Radius</label>
-                    <div class="range">
-                        <input type="range" class="form-range" id="radius" min="0" max="100" step="5" value="30" onchange="changeRadius(this.value)"/>
-                    </div>
-                </div>
-                <div class="my-2 mx-4 flex">
-                    <button class="btn text-primary " id="cssBtn">Generate CSS</button>
-                    <button class="btn text-danger " id="clear" onclick="clearcontent()">Clear</button>
-                </div>
-              </div>
 
-              <code id="generatedCss" class="w-auto" style="text-align:left;font-size:0.7rem;" >
+                    <code id="generatedCss" class="w-auto" style="text-align:left;font-size:0.7rem;">
 
-              </code>
+                    </code>
+                </div>
             </div>
         </div>
-      </div>
-      <footer>
-        <div class="text-left mx-4">
-          <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
-      </div>
+        <footer>
+            <div class="text-left mx-4">
+                <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+            </div>
 
-    </footer>
-    <!-- End your project here-->
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript" src="js/index.js">
+        </footer>
+        <!-- End your project here-->
+        <!-- MDB -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Custom scripts -->
+        <script type="text/javascript" src="js/index.js">
 
-    </script>
-  </body>
+        </script>
+    </body>
+
 </html>
