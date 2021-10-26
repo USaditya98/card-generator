@@ -5,6 +5,7 @@ body {
   letter-spacing: 1px;
   background-color: #e0e0e0;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .card-body {
@@ -39,28 +40,27 @@ input[type="color"] {
   /* display: none; */
   -webkit-appearance: none;
   border: none;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0px auto;
+  /* text-align: center; */
+  /* display: flex; */
+  /* align-items: center; */
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
-  padding:    0px;
+  padding: 0px;
   border-radius: 50%;
   overflow: hidden;
   border: none;
-
-
 }
 
 input[type="color"]::-webkit-color-swatch {
   border: none border-radius:50%;
   overflow: hidden;
   border: none;
-
-
 }
 
 #toolCard::-webkit-scrollbar {
@@ -83,10 +83,10 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 #toolCard::-webkit-scrollbar-button {
-  /* background-color: #e6dee1; */
-  /* border-radius: 20px;
- border: 6px solid transparent;
- background-clip: content-box; */
+  /* background-color: #d6dee1;
+  border-radius: 20px; */
+  /* border: 6px solid black; */
+  /* background-clip: content-box; */
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -100,10 +100,13 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  background: #1266f1;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: transparent;
   cursor: pointer;
+  border: 3px solid #1266f1;
 }
 
 .inset {

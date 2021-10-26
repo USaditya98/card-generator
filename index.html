@@ -37,13 +37,13 @@
                         <div class="my-2 mx-4">
                             <label class="" for="height">Height</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="height" min="0" max="500" step="10" value="400" onchange="changeHeight(this.value)" />
+                                <input type="range" class="form-range" id="height" min="0" max="500" step="1" value="400" />
                             </div>
                         </div>
                         <div class="my-2 mx-4">
                             <label class="" for="width">Width</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="width" min="0" max="500" step="1" value="400" onchange="changeWidth(this.value)" />
+                                <input type="range" class="form-range" id="width" min="0" max="500" step="1" value="400" />
                             </div>
                         </div>
                         <hr>
@@ -59,53 +59,59 @@
                         </div>
                         <hr>
                         <div class="my-2 mx-4">
-                            <label class="" for="shadow">Shadow (X,Y)</label>
+                            <label class="" for="shadow">Shadow - x</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="shadow" min="0" max="50" step="1" value="18" onchange="changeShadowXY(this.value)" />
+                                <input type="range" class="form-range" id="shadowX" min="-50" max="50" step="1" value="18" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class="" for="shadow">Shadow - y</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="shadowY" min="-50" max="50" step="1" value="18" />
                             </div>
                         </div>
                         <div class="my-2 mx-4">
                             <label class="" for="shadowBlur">Blur</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="shadowBlur" min="0" max="60" step="1" value="60" onchange="changeBlur(this.value)" />
+                                <input type="range" class="form-range" id="shadowBlur" min="0" max="60" step="1" value="60" />
                             </div>
                         </div>
                         <div class="my-2 mx-4">
                             <label class="" for="shadowSpread">Spread</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="shadowSpread" min="0" max="25" step="1" value="0" onchange="changeShadowSpread(this.value)" />
+                                <input type="range" class="form-range" id="shadowSpread" min="0" max="25" step="1" value="0" />
                             </div>
                         </div>
                         <hr>
                         <div class="my-2 mx-4 d-flex">
-                            <label class=" mx-auto w-50 " for="shadowColor">Shadow Color </label>
+                            <label class=" m-auto w-50 " for="shadowColor">Shadow Color </label>
                             <div class="w-50">
-                                <input type="color" value="#bebebe" id="shadowColor" onchange="changeShadowColor(this.value)" />
+                                <input type="color" value="#bebebe" id="shadowColor" />
                             </div>
                         </div>
                         <div class="my-2 mx-4 d-flex">
                             <label class=" mx-auto w-50 " for="bgColor">BackGround Color </label>
                             <div class="w-50">
-                                <input type="color" class="" value="#bebebe" id="bgColor" onchange="changeBG(this.value)" />
+                                <input type="color" class="" value="#bebebe" id="bgColor" />
                             </div>
                         </div>
                         <div class="my-2 mx-4 d-flex">
                             <label class=" mx-auto w-50 " for="borderColor">Border Color </label>
                             <div class="w-50">
-                                <input type="color" class="" value="#bebebe" id="borderColor" onchange="changeBorderColor(this.value)" />
+                                <input type="color" class="" value="#bebebe" id="borderColor" />
                             </div>
                         </div>
                         <hr>
                         <div class="my-2 mx-4">
                             <label class=" " for="border ">Border Width</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="border" min="0" max="10" step="0.5" value="4" onchange="changeBorderWidth(this.value)" />
+                                <input type="range" class="form-range" id="border" min="0" max="20" step="1" value="4" />
                             </div>
                         </div>
                         <div class="my-2 mx-4">
                             <label class=" " for="radius ">Border Radius</label>
                             <div class="range">
-                                <input type="range" class="form-range" id="radius" min="0" max="100" step="5" value="30" onchange="changeRadius(this.value)" />
+                                <input type="range" class="form-range" id="radius" min="0" max="50" step="1" value="30" />
                             </div>
                         </div>
                         <div class="my-2 mx-4 flex">

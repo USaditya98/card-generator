@@ -2,13 +2,27 @@
 function clearcontent() {
   document.getElementById('generatedCss').innerHTML = "";
 }
+document.getElementById("height").addEventListener("input", changeHeight);
+document.getElementById("width").addEventListener("input", changeWidth);
+document.getElementById("shadowX").addEventListener("input", changeShadowXY);
+document.getElementById("shadowY").addEventListener("input", changeShadowXY);
+document.getElementById("border").addEventListener("input", changeBorderWidth);
+document.getElementById("radius").addEventListener("input", changeRadius);
+document.getElementById("shadowBlur").addEventListener("input", changeBlur);
+document.getElementById("shadowSpread").addEventListener("input", changeShadowSpread);
+document.getElementById("shadowColor").addEventListener("input", changeShadowColor);
+document.getElementById("bgColor").addEventListener("input", changeBG);
+document.getElementById("borderColor").addEventListener("input", changeBorderColor);
 // to change height of the card
-function changeHeight(val) {
+function changeHeight() {
+  var val = document.getElementById('height').value;
   document.getElementById('create').style.height = val + 'px';
+
   localStorage.setItem('height', val);
 }
 // to change width of the card
-function changeWidth(val) {
+function changeWidth() {
+  var val = document.getElementById('width').value;
   document.getElementById('create').style.width = val + 'px';
   localStorage.setItem('width', val);
 }
@@ -21,8 +35,8 @@ function shadowColor() {
   return document.getElementById('shadowColor').value;
 }
 // to change shadow color of the card
-function changeShadowColor(val) {
-  document.getElementById('create').style.boxShadow = getRadioValue() + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + val;
+function changeShadowColor() {
+  document.getElementById('create').style.boxShadow = getRadioValue() + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
 
 }
 // to change shadow value of the card
@@ -44,43 +58,55 @@ function getRadioValue() {
 function changeShadowInsetOutset(radioVal) {
   if (radioVal == 'outset') {
     radioVal = '';
-    document.getElementById('create').style.boxShadow = radioVal + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
+    document.getElementById('create').style.boxShadow = radioVal + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
   } else {
-    document.getElementById('create').style.boxShadow = radioVal + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
+    document.getElementById('create').style.boxShadow = radioVal + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
   }
 }
 
 // to get shadow x & y value
-function shadowXYValue() {
-  return document.getElementById('shadow').value;
+// function shadowXYValue() {
+//   return document.getElementById('shadow').value;
+// }
+
+// to get shadow x   value
+function shadowXValue() {
+  return document.getElementById('shadowX').value;
+}
+// to get shadow y   value
+function shadowYValue() {
+  return document.getElementById('shadowY').value;
 }
 // to get shadow spread value
 function shadowSpread() {
   return document.getElementById('shadowSpread').value;
 }
 // to chabge border radius of the card
-function changeRadius(val) {
-  document.getElementById('create').style.borderRadius = val + '%';
-  localStorage.setItem('borderRadius', val);
+function changeRadius() {
+  let radiusValue = document.getElementById('radius').value;
+  document.getElementById('create').style.borderRadius = radiusValue + '%';
 }
 // to change background color of the card
-function changeBG(val) {
-  document.getElementById('create').style.backgroundColor = val;
-  document.body.style.backgroundColor = val;
+function changeBG() {
+  document.getElementById('create').style.backgroundColor = bgColor();
+  document.body.style.backgroundColor = bgColor();
   localStorage.setItem('bgColor', val);
 }
 // to change background image of the card
 function changeBackgroundImage(val) {
   var d = document.getElementById('create').style.backgroundImage = 'url(' + val + ')';
-  console.log(d);
 }
 // to change border color of the card
 function changeBorderColor(val) {
-  document.getElementById('create').style.borderColor = val;
+  document.getElementById('create').style.borderColor = borderColor();
 }
 // to get border width of the card
 function borderWidth() {
   return document.getElementById('border').value;
+}
+// to get background color of the card
+function bgColor() {
+  return document.getElementById('bgColor').value;
 }
 // to get border color of the card
 function borderColor() {
@@ -92,22 +118,37 @@ function changeBorderWidth() {
   console.log(borderWidth() + 'px' + ' solid' + ' ' + borderColor());
 }
 
-function changeShadowXY(val) {
+// function changeShadowXY(val) {
+//   var radioInsetOutset = getRadioValue();
+//   var boxShadowData = document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
+//   // document.getElementById('toolCard').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor() ;
+//
+// }
+
+function changeShadowXY() {
   var radioInsetOutset = getRadioValue();
-  var boxShadowData = document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
+  var boxShadowData = document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
   // document.getElementById('toolCard').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor() ;
 
 }
+// function changeShadowY(val) {
+//   var radioInsetOutset = getRadioValue();
+//   var boxShadowData = document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
+//   // document.getElementById('toolCard').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor() ;
+//
+// }
 
 function changeShadowSpread(val) {
+  let shadowValue = document.getElementById('shadowSpread').value;
   var radioInsetOutset = getRadioValue();
-  var boxShadowData = document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + val + 'px' + ' ' + shadowColor();
+  var boxShadowData = document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowValue + 'px' + ' ' + shadowColor();
   // document.getElementById('toolCard').style.boxShadow =    radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + val + 'px' + ' ' + shadowColor();
 }
 
-function changeBlur(val) {
+function changeBlur() {
+  let blurVal = document.getElementById('shadowBlur').value;
   var radioInsetOutset = getRadioValue();
-  document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + val + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
+  document.getElementById('create').style.boxShadow = radioInsetOutset + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurVal + 'px' + ' ' + shadowSpread() + 'px' + ' ' + shadowColor();
   // document.getElementById('toolCard').style.boxShadow = radioInsetOutset + ' ' + shadowXYValue() + 'px' + ' ' + shadowXYValue() + 'px' + ' ' + val + 'px' + ' '+ shadowSpread() +'px' + ' ' +shadowColor();
 }
 
@@ -118,7 +159,8 @@ function generateCss() {
   clearcontent();
   var height = document.getElementById('height').value;
   var width = document.getElementById('width').value;
-  var boxShadow = document.getElementById('shadow').value;
+  var boxShadowX = document.getElementById('shadowX').value;
+  var boxShadowY = document.getElementById('shadowY').value;
   // var boxShadowColor = 'lightgray';
   var borderRadius = document.getElementById('radius').value;
   var boxShadowColor = document.getElementById('shadowColor').value;
@@ -131,7 +173,7 @@ function generateCss() {
     radioButton = ' ';
   }
   var arr = ['height', 'width', 'box-shadow', 'border-radius', 'background-color', 'border'];
-  var arrValue = [height + 'px;', width + 'px;', radioButton + ' ' + boxShadow + 'px' + ' ' + boxShadow + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + boxShadowColor + '<input type="color" style="width:15px;height:15px" disabled value="' + boxShadowColor + '"/>;', borderRadius + '%;', bgColor + '<input type="color" style="width:15px;height:15px" disabled value="' + bgColor + '"/>;', borderWidth + 'px solid' + ' ' + borderColor + '<input type="color" style="width:15px;height:15px" disabled value="' + borderColor + '"/>;'];
+  var arrValue = [height + 'px;', width + 'px;', radioButton + ' ' + boxShadowX + 'px' + ' ' + boxShadowY + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + boxShadowColor + '<input type="color" style="width:15px;height:15px" disabled value="' + boxShadowColor + '"/>;', borderRadius + '%;', bgColor + '<input type="color" style="width:15px;height:15px" disabled value="' + bgColor + '"/>;', borderWidth + 'px solid' + ' ' + borderColor + '<input type="color" style="width:15px;height:15px" disabled value="' + borderColor + '"/>;'];
   var cont = document.getElementById('generatedCss');
   console.log(arrValue);
   // create ul element and set the attributes.
