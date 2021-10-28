@@ -2,22 +2,70 @@
 function clearcontent() {
   document.getElementById('generatedCss').innerHTML = "";
 }
+
 document.getElementById("height").addEventListener("input", changeHeight);
 document.getElementById("width").addEventListener("input", changeWidth);
 document.getElementById("shadowX").addEventListener("input", changeShadowXY);
 document.getElementById("shadowY").addEventListener("input", changeShadowXY);
 document.getElementById("border").addEventListener("input", changeBorderWidth);
-document.getElementById("radius").addEventListener("input", changeRadius);
+// document.getElementById("radius").addEventListener("input", changeRadius);
 document.getElementById("shadowBlur").addEventListener("input", changeBlur);
 document.getElementById("shadowSpread").addEventListener("input", changeShadowSpread);
 document.getElementById("shadowColor").addEventListener("input", changeShadowColor);
 document.getElementById("bgColor").addEventListener("input", changeBG);
 document.getElementById("borderColor").addEventListener("input", changeBorderColor);
+document.getElementById("animateBtn").addEventListener("click", animate);
+document.getElementById("borderRadiusTopLeft").addEventListener("input", changeBorderRadius);
+document.getElementById("borderRadiusTopRight").addEventListener("input", changeBorderRadius);
+document.getElementById("borderRadiusBottomLeft").addEventListener("input", changeBorderRadius);
+document.getElementById("borderRadiusBottomRight").addEventListener("input", changeBorderRadius);
+document.getElementById("animateStopBtn").addEventListener("click", stopAnimation);
+// document.getElementById("cssBtn").addEventListener("click", openModal);
+
+function copyDivToClipboard() {
+     var range = document.createRange();
+     range.selectNode(document.getElementById("generatedCss"));
+     window.getSelection().removeAllRanges(); // clear current selection
+     window.getSelection().addRange(range); // to select text
+     document.execCommand("copy");
+     window.getSelection().removeAllRanges();// to deselect
+ }
+function animate() {
+  const val = document.getElementById('create');
+  const stopBtn =  document.getElementById('animateStopBtn');
+  stopBtn.style.display = "block";
+  let id = null;
+  clearInterval(id);
+  color = setInterval(generateRandomColor, 2000);
+  function generateRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+
+      console.log(letters[Math.floor(Math.random() * 16)]);
+    }
+    console.log(color);
+    val.style.backgroundColor = color;
+    document.body.style.backgroundColor = 'black';
+    // val.style.backgroundColor = color;
+    val.style.boxShadow = getRadioValue() + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + color;
+    // document.getElementById('textColor').style.textShadow = shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + color;
+    document.getElementById('textColor').style.color = color;
+
+
+  }
+
+}
+
+function stopAnimation(){
+  location.reload();
+}
 // to change height of the card
 function changeHeight() {
   var val = document.getElementById('height').value;
   document.getElementById('create').style.height = val + 'px';
-
+  // generateCss();
   localStorage.setItem('height', val);
 }
 // to change width of the card
@@ -81,10 +129,31 @@ function shadowYValue() {
 function shadowSpread() {
   return document.getElementById('shadowSpread').value;
 }
+// to get border top - left radius value
+function borderRadiusTopLeft() {
+  return document.getElementById('borderRadiusTopLeft').value;
+}
+// to get border top - right radius value
+function borderRadiusTopRight() {
+  return document.getElementById('borderRadiusTopRight').value;
+}
+// to get border bottom -left  radius value
+function borderRadiusBottomLeft() {
+  return document.getElementById('borderRadiusBottomLeft').value;
+}
+// to get border bottom - right  radius value
+function borderRadiusBottomRight() {
+  return document.getElementById('borderRadiusBottomRight').value;
+}
 // to chabge border radius of the card
 function changeRadius() {
   let radiusValue = document.getElementById('radius').value;
   document.getElementById('create').style.borderRadius = radiusValue + '%';
+}
+// to chabge border top radius of the card
+function changeBorderRadius() {
+  // 100% 0% 100% 0% / 0% 100% 0% 100%
+   document.getElementById('create').style.borderRadius = borderRadiusTopLeft() + '%' + ' ' + borderRadiusTopRight() + '%' + ' ' + borderRadiusBottomLeft() + '%' + ' ' + borderRadiusBottomRight() + '%';
 }
 // to change background color of the card
 function changeBG() {
@@ -162,7 +231,7 @@ function generateCss() {
   var boxShadowX = document.getElementById('shadowX').value;
   var boxShadowY = document.getElementById('shadowY').value;
   // var boxShadowColor = 'lightgray';
-  var borderRadius = document.getElementById('radius').value;
+  // var borderRadius = document.getElementById('radius').value;
   var boxShadowColor = document.getElementById('shadowColor').value;
   var bgColor = document.getElementById('bgColor').value;
   var borderColor = document.getElementById('borderColor').value;
@@ -173,7 +242,7 @@ function generateCss() {
     radioButton = ' ';
   }
   var arr = ['height', 'width', 'box-shadow', 'border-radius', 'background-color', 'border'];
-  var arrValue = [height + 'px;', width + 'px;', radioButton + ' ' + boxShadowX + 'px' + ' ' + boxShadowY + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + boxShadowColor + '<input type="color" style="width:15px;height:15px" disabled value="' + boxShadowColor + '"/>;', borderRadius + '%;', bgColor + '<input type="color" style="width:15px;height:15px" disabled value="' + bgColor + '"/>;', borderWidth + 'px solid' + ' ' + borderColor + '<input type="color" style="width:15px;height:15px" disabled value="' + borderColor + '"/>;'];
+  var arrValue = [height + 'px;', width + 'px;', radioButton + ' ' + boxShadowX + 'px' + ' ' + boxShadowY + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + boxShadowColor + '<input type="color" style="width:15px;height:15px" disabled value="' + boxShadowColor + '"/>;', borderRadiusTopLeft() + '%' + ' ' + borderRadiusTopRight() + '%' + ' ' + borderRadiusBottomLeft() + '%' + ' ' + borderRadiusBottomRight() + '%', bgColor + '<input type="color" style="width:15px;height:15px" disabled value="' + bgColor + '"/>;', borderWidth + 'px solid' + ' ' + borderColor + '<input type="color" style="width:15px;height:15px" disabled value="' + borderColor + '"/>;'];
   var cont = document.getElementById('generatedCss');
   console.log(arrValue);
   // create ul element and set the attributes.
@@ -185,7 +254,7 @@ function generateCss() {
     var li = document.createElement('li'); // create li element.
     li.innerHTML = arr[i] + ':' + arrValue[i]; // assigning text to li using array value.
     li.setAttribute('style', 'display: block;'); // remove the bullets.
-    li.setAttribute('class', 'font-monospace'); // remove the bullets.
+    li.setAttribute('class', 'font-monospace copyData'); // remove the bullets.
     ul.appendChild(li); // append li to ul.
   }
   cont.appendChild(ul);
