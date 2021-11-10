@@ -2,7 +2,6 @@
 function clearcontent() {
   document.getElementById('generatedCss').innerHTML = "";
 }
-
 document.getElementById("height").addEventListener("input", changeHeight);
 document.getElementById("width").addEventListener("input", changeWidth);
 document.getElementById("shadowX").addEventListener("input", changeShadowXY);
@@ -19,9 +18,13 @@ document.getElementById("borderRadiusTopLeft").addEventListener("input", changeB
 document.getElementById("borderRadiusTopRight").addEventListener("input", changeBorderRadius);
 document.getElementById("borderRadiusBottomLeft").addEventListener("input", changeBorderRadius);
 document.getElementById("borderRadiusBottomRight").addEventListener("input", changeBorderRadius);
+document.getElementById("rotate").addEventListener("input", rotate);
 document.getElementById("animateStopBtn").addEventListener("click", stopAnimation);
+document.getElementById("bounce").addEventListener("click", bounceAnimation);
 // document.getElementById("cssBtn").addEventListener("click", openModal);
-
+function bounceAnimation(){
+  document.getElementById("create").style.animation = "mymove 1s infinite";
+}
 function copyDivToClipboard() {
      var range = document.createRange();
      range.selectNode(document.getElementById("generatedCss"));
@@ -52,8 +55,6 @@ function animate() {
     val.style.boxShadow = getRadioValue() + ' ' + shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + color;
     // document.getElementById('textColor').style.textShadow = shadowXValue() + 'px' + ' ' + shadowYValue() + 'px' + ' ' + blurValue() + 'px' + ' ' + color;
     document.getElementById('textColor').style.color = color;
-
-
   }
 
 }
@@ -145,6 +146,10 @@ function borderRadiusBottomLeft() {
 function borderRadiusBottomRight() {
   return document.getElementById('borderRadiusBottomRight').value;
 }
+// to get rotation value
+function rotationValue() {
+  return document.getElementById('rotate').value;
+}
 // to chabge border radius of the card
 function changeRadius() {
   let radiusValue = document.getElementById('radius').value;
@@ -186,6 +191,10 @@ function changeBorderWidth() {
   document.getElementById('create').style.border = borderWidth() + 'px' + ' solid' + ' ' + borderColor();
   console.log(borderWidth() + 'px' + ' solid' + ' ' + borderColor());
 }
+// to rotate   the card
+function rotate() {
+  document.getElementById('create').style.transform = 'rotate('+rotationValue()+'deg'+')';
+ }
 
 // function changeShadowXY(val) {
 //   var radioInsetOutset = getRadioValue();
@@ -241,8 +250,8 @@ function generateCss() {
   if (radioButton == 'outset') {
     radioButton = ' ';
   }
-  var arr = ['height', 'width', 'box-shadow', 'border-radius', 'background-color', 'border'];
-  var arrValue = [height + 'px;', width + 'px;', radioButton + ' ' + boxShadowX + 'px' + ' ' + boxShadowY + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + boxShadowColor + '<input type="color" style="width:15px;height:15px" disabled value="' + boxShadowColor + '"/>;', borderRadiusTopLeft() + '%' + ' ' + borderRadiusTopRight() + '%' + ' ' + borderRadiusBottomLeft() + '%' + ' ' + borderRadiusBottomRight() + '%', bgColor + '<input type="color" style="width:15px;height:15px" disabled value="' + bgColor + '"/>;', borderWidth + 'px solid' + ' ' + borderColor + '<input type="color" style="width:15px;height:15px" disabled value="' + borderColor + '"/>;'];
+  var arr = ['height', 'width', 'box-shadow', 'border-radius', 'background-color', 'border','transform'];
+  var arrValue = [height + 'px;', width + 'px;', radioButton + ' ' + boxShadowX + 'px' + ' ' + boxShadowY + 'px' + ' ' + blurValue() + 'px' + ' ' + shadowSpread() + 'px' + ' ' + boxShadowColor + '<input type="color" style="width:15px;height:15px" disabled value="' + boxShadowColor + '"/>;', borderRadiusTopLeft() + '%' + ' ' + borderRadiusTopRight() + '%' + ' ' + borderRadiusBottomLeft() + '%' + ' ' + borderRadiusBottomRight() + '%', bgColor + '<input type="color" style="width:15px;height:15px" disabled value="' + bgColor + '"/>;', borderWidth + 'px solid' + ' ' + borderColor + '<input type="color" style="width:15px;height:15px" disabled value="' + borderColor + '"/>;','rotate('+rotationValue()+'deg);'];
   var cont = document.getElementById('generatedCss');
   console.log(arrValue);
   // create ul element and set the attributes.
