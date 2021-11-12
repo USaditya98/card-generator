@@ -3,7 +3,7 @@ function clearcontent() {
   document.getElementById('generatedCss').innerHTML = "";
 }
 window.onload = function() {
-  setTimeout(removeLoader, 2000);
+  setTimeout(removeLoader, 3000);
   function removeLoader(){
       document.getElementById('lottie').remove();
     }
