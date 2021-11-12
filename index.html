@@ -16,30 +16,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Kaushan+Script&family=Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/mdb.min.css" />
         <link rel="stylesheet" href="css/style.css" />
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     </head>
     <style>
-        #creates {
-            width: 100px;
-            height: 100px;
-            background: red;
-            position: relative;
-            animation: mymove 1s infinite;
-        }
 
-        @keyframes mymove {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 
     <body>
-
         <!-- Modal -->
+        <div id="lottie" class="mx-auto position-absolute w-100 text-center d-flex justify-content-center  my-auto" style="z-index:99;Height:100vh">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_faetfrht.json" background="transparent" speed="1" style="width: 300px; height: 300px;" class="align-self-center" autoplay loop></lottie-player>
+        </div>
         <div class="modal top fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
             <div class="modal-dialog   modal-dialog-centered">
                 <div class="modal-content">
@@ -188,10 +175,99 @@
                         </div>
                         <hr>
                         <div>Animation</div>
+                        <div class="my-2 mx-4">
+                            <select class="form-select" id="animationType" aria-label="Select Animation Type">
+                                <option selected value="1">Select</option>
+                                <option value="rot">spin</option>
+                                <option value="gelatine">Gelatine</option>
+                                <option value="pulse">Pulse</option>
+                                <option value="grow">Grow</option>
+                                <option value="shrink">Shrink</option>
+                                <option value="hithere">Notify</option>
+                                <option value="flash">Flash</option>
+                                <option value="elastic-spin">Elastic Spin</option>
+                                <option value="bounce">Bounce</option>
+                                <option value="bounce2">Bounce-2</option>
+                                <option value="shake">Shake</option>
+                                <option value="swing">Swing</option>
+                                <option value="wobble">Wobble</option>
+                                <option value="hinge">Hinge</option>
+                            </select>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class=" " for="duration">Duration(in milliseconds)</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="duration" min="0" max="10000" step="100" value="1000" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class=" " for="delay">Delay(in milliseconds)</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="delay" min="0" max="10000" step="100" value="1000" />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <select class="form-select" id="animationTimingFunction" aria-label="Select Animation Timing Function">
+                                <option selected value="notselected">Select</option>
+                                <option value="linear">linear</option>
+                                <option value="ease">ease</option>
+                                <option value="ease-in">ease-in</option>
+                                <option value="ease-out">ease-out</option>
+                                <!-- <option value="step-start">step-start</option>
+                                <option value="step-end">step-end</option> -->
+                            </select>
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label class=" " for="iteration">Iteration</label>
+                            <div class="range">
+                                <input type="range" class="form-range" id="iteration" min="0" max="100" step="1" value="1" disabled />
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4 d-flex justify-content-around">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="repeat" id="repeat" checked />
+                                <label class="form-check-label" for="repeat">
+                                    Repeat (Infinity)
+                                </label>
+                            </div>
+                            <!-- Checked checkbox -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="reverse" id="reverse" />
+                                <label class="form-check-label" for="repeat">
+                                    Reverse
+                                </label>
+                            </div>
+                        </div>
+                        <div class="my-2 mx-4 d-flex justify-content-center">
+                            <!-- <div class="w-50"><button class="pe-auto"><i class="fas fa-pause"></i></button></div> -->
+                            <div class="w-50">
+                                <button id="playPause" class="pe-auto">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
                         <hr>
                         <div class="my-2 mx-4 flex">
-                            <button type="button" name="button" class="btn" id="bounce">bounce</button>
-                            <button type="button" name="button" class="btn" id="spin">bounce</button>
+                            <button type="button" name="button" class="btn btn-dark m-1" id="spin">Spin</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="gelatine">Gelatine</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="pulse">Pulse</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="grow">Grow</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="flash">flash</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="notify">Notify</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="elasticSpin">Elastic Spin</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="fadeIn">Fade-in</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="fadeOut">Fade-out</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="fadeInDown">Fade In Down</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="fadeOutDown">Fade Out Down</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="fadeInLeft">Fade In Left</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="fadeOutRight">Fade Out Right</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="bounce">Bounce</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="bounce2">Bounce-2</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="shrink">Shrink</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="shake">Shake</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="swing">Swing</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="wobble">Wobble</button>
+                            <button type="button" name="button" class="btn btn-dark  m-1" id="hinge">Hinge</button>
 
                         </div>
                         <!-- <div class="my-2 mx-4">
